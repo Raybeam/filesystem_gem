@@ -3,7 +3,7 @@ require 'fog/aws'
 
 module FilePather
 
-  def parse_path path
+  def self.parse_path path
     result = {}
     path_chunks = path.split("://")
     if path_chunks.length > 1
@@ -12,6 +12,7 @@ module FilePather
             if s3_chunks.length < 2
                 puts('Invalid S3 path')
                 return false
+            end
             result[:type] = :s3
             result[:dir] = s3_chunks[0]
             result[:file] = s3_chunks[1..-1].join('/')
@@ -31,14 +32,15 @@ module FilePather
             return false
         end
     else
-    #assume local
-    result[:type] = :local
-    result[:path] = path
+      #assume local
+      result[:type] = :local
+      result[:path] = path
     end
     return result
   end
 
-  def copy source dest
+  def self.copy source, dest
+    puts(fpS3)
     #parse the paths from parameters
     source_result = parse_path(source)
     dest_result   = parse_path(dest)
@@ -87,7 +89,7 @@ module FilePather
     end
   end
 
-  def get_system type
+  def self.get_system type
     if type == :S3
       return fpS3
     elsif type == :hdfs
@@ -98,5 +100,7 @@ module FilePather
       return fpLocal
     else
       return false
+    end
   end
+
 end

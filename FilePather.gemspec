@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = FilePather::VERSION
   spec.authors       = ["Alex Rumbaugh"]
   spec.email         = ["arumbaugh@raybeam.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = "Transfer files between filesystems"
+  spec.description   = ""
   spec.homepage      = ""
   spec.license       = "MIT"
 
