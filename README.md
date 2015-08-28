@@ -1,29 +1,46 @@
-# FilePather
-
-TODO: Write a gem description
+# FilePather (name is temporary!)
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'FilePather'
+    gem 'FilePather', :path => 'path/to/FilePather'
 
 And then execute:
 
     $ bundle
 
-Or install it yourself as:
+## Supported Filesystems
+- S3
+- Local
+- HTTP (source only)
+- Google*
+- HDFS*
 
-    $ gem install FilePather
+\* Not yet implemented
+
+## Filepath Format
+Paths must be formatted correctly to be understood by FilePather.
+
+S3:
+
+    s3://bucketname/file
+    
+URL:
+
+    http://www.website.com/file.csv
+    
 
 ## Usage
+The following operations are available:
 
-TODO: Write usage instructions here
+    FilePather.copy source dest
+    
+    FilePather.move source dest
+    
+    FilePather.delete filepath
+    
+    FilePather.toStream filepath
 
-## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/FilePather/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+
